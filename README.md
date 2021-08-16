@@ -42,10 +42,10 @@ Options:
 ## Example
 
 ```bash
-python3 file1.csv file2.csv file3.csv
+python3 csv2sqlite3.py file1.csv file2.csv file3.csv
 ```
 ```bash
-python3 --output-filename my_db.db file1.csv
+python3 csv2sqlite3.py --output-filename my_db.db file1.csv
 ```
 
 ## License
