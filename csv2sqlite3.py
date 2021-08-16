@@ -55,6 +55,7 @@ def to_sqlite3(csv_filenames: List[Path], output_filename: Optional[str]="output
     for filename in csv_filenames:
         typer.echo(f"{Fore.YELLOW}N:{Fore.RESET} Working with {filename.name}")
         db_from_csv(filename=filename, cursor=cur)
+    con.commit()
 
 if __name__ == "__main__":
     app() 
