@@ -8,7 +8,7 @@ from time import time
 
 
 init(autoreset=True)
-app = typer.Typer()
+app = typer.Typer(add_completion=False)
 make_join = lambda lst: ','.join(["'{}'".format(str(i).replace("'", '')) for i in lst])
 
 def check_files(filenames: list, ex: str):
@@ -45,7 +45,7 @@ def db_from_csv(filename: Path, cursor: sqlite3.Cursor) -> None:
     typer.echo(f"{Fore.GREEN}N:{Fore.RESET} Done insert into {table} {counter} rows in {time()-start:.2f}s")
 
 @app.command()
-def to_sqlite3(csv_filenames: List[Path], output_filename: Optional[str]="output.sqlite3"):
+def main(csv_filenames: List[Path], output_filename: Optional[str]="output.sqlite3"):
     check_files(filenames=csv_filenames, ex='csv')
     output_filename = output_filename if output_filename.endswith(('.sqlite3', 'db')) else output_filename+'.sqlite3'
     typer.echo(f"{Fore.YELLOW}N:{Fore.RESET} Output file is {output_filename}")
